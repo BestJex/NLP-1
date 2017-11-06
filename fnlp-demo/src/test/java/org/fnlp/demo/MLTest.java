@@ -9,6 +9,7 @@ import org.fnlp.demo.ml.SimpleClassifier2;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.fnlp.nlp.cn.CNFactory;
 
 public class MLTest {
 
@@ -28,6 +29,19 @@ public class MLTest {
 		HierClassifierUsage1.main(null);
 		HierClassifierUsage2.main(null);
 		
+	}
+
+	@Test
+	public void test1() throws Exception {
+		CNFactory factory = CNFactory.getInstance("../models/", CNFactory.Models.SEG);
+		// 使用分词器对中文句子进行分词，得到分词结果
+		String[] words = factory.seg("关注自然语言处理、语音识别、深度学习等方向的前沿技术和业界动态。");
+		// 打印分词结果
+		for(String word : words) {
+			System.out.print(word + " ");
+		}
+		System.out.println();
+
 	}
 
 }
